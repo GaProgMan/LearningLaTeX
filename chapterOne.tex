@@ -18,18 +18,25 @@
 これは \ruby{日}{に} \ruby{本}{ほん}\ruby{語}{ご}です。\\
 %\\furigana text example: \ruby{山}{やま}\ruby{田}{だ}と\ruby{上}{うえ}\ruby{田}{だ}
 \end{CJK}
-\indent{}One of the (many) great things about writing documents in \LaTeX is the support for packages.
-The above text, when added to a word processor, would produce an output \emph{without} Ruby
-text\footnote{see: \url{http://en.wikipedia.org/wiki/Ruby_text} for more details on Ruby text}.
-However, due to the modular nature of \LaTeX, adding a single reference to the  package
-(\emph{\{ruby\}}) will add the Ruby text (sometimes called \emph{Furigana}) to the document.\\
-\indent{}The following
-is an example of what the above Japanese characters might look like when imported into a standard
-word processor (assuming that the user has the sufficient language files installed on their system):\\
+\indent{}One of the (many) great things about writing documents in \LaTeX is the support for packages. The above text, when added to a word processor, would produce an output \emph{without} Ruby text\footnote{see: \url{http://en.wikipedia.org/wiki/Ruby_text} for more details on Ruby text}. However, due to the modular nature of \LaTeX, adding a single reference to the package (\emph{\{ruby\}}) will add the Ruby text (sometimes called \emph{Furigana}) to the document.\\
+\indent{}The following is an example of what the above Japanese characters might look like when imported into a standard word processor (assuming that the user has the sufficient language files installed on their system):\\
 \begin{CJK}{UTF8}{min}
 \indent{}これは 日本語です。\\
 \end{CJK}
-\indent{}As you can see, the text is still readable (for those who know how to read the characters in
-that particular combination), but the ruby text is missing. This can be a problem for novice learners, as
-they may not know how to read the characters in the given configuration.
+\indent{}As you can see, the text is still readable (for those who know how to read the characters in that particular combination), but the ruby text is missing. This can be a problem for novice learners, as they may not know how to read the characters in the given configuration.
 \section{Description of Usage}
+To use the Ruby package, in order to get Ruby texy, one must first add a reference to the Ruby package (typically in the main source file. In this instance the main source faile is called source.tex).\\
+\indent{}This is done by adding the following code to the preamble of the document:
+%inform LaTeX to add line numbers to the left of the code, add the numbers to
+%each line, and add a frame around the code
+\lstset{numbers=left, stepnumber=1, frame=single}
+	\begin{lstlisting}
+\usepackage{CJKutf8}
+\usepackage[overlap]{ruby}
+	\end{lstlisting}
+\indent{}These two lines of code tell the \LaTeX interpreter to load the files that are required to parse Chinese, Japanese and Korean text that is stored in UTF8 and for processing Ruby text (lines 1 and 2, respecitvely). This is similar to the way that programming languages load class and header files (through an include or using system)\\
+\indent{}Once these packages have been added to the preamble of the document, Chinese, Japanese and Korean text can be added with Ruby text overlaying it. To do this, you would add the following code, where neccessary:
+\lstset{numbers=left, stepnumber=1, frame=single}
+	\begin{lstlisting}
+\Ruby{Kanji Character}{Ruby Text}
+	\end{lstlisting}

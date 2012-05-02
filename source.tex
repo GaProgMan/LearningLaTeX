@@ -1,0 +1,108 @@
+%the document class command HAS to be the first thing in a LaTeX file. It takes
+%the following format:
+% \documentclass[options]{class}
+
+\documentclass[11pt, a4paper, twoside]{report}
+
+%document classes are:
+%article	- for articles in journals, presentations, short reports, program
+%			  documentation, etc.
+%IEEEtran	- for articles in the IEEE transactions format.
+%proc		- for proceedings (based on article)
+%minimal	- only used for debugging purposes
+%report	- for full reports, thesis documents, small books, etc.
+%book	- for full books.
+%slides	- for slides (uses big sans serif characters)
+%memoir	- for writing full memoir-type books
+%letter	- for writing letters
+%beamer	- for writing presentations
+
+%user packages can be loaded in the preamble only. They go in here in the following format:
+% \usepackage[options]{package}
+
+%including the package "epigraph" this will allow quotes to be added at the begining of each chapter
+%or section.
+\usepackage{epigraph}
+
+%the following two usepackage statements MUST be included for the Japanese text found in
+%chapterOne.tex to compile correctly.
+\usepackage{CJKutf8}
+\usepackage[overlap]{ruby}
+
+%the following package is required for adding source code listings to a document. At the minute,
+%there is a source code listing in the file chapterTwo.tex
+\usepackage{listings}
+
+\usepackage{url}
+%the above package is used for parsing url text
+
+\usepackage{mathtools}
+%the above package is used to parse mathematicall chaaracters (used in abstract.tex)
+
+%this area is called the "preamble"
+
+\begin{document}
+
+\title{A Selection of Examples of \LaTeX Code with Discussions}
+\author {Jamie Taylor}
+\maketitle
+
+%\title, and \author are compulsory. If \date is omitted, LaTeX will put today's date in it's place
+%the whole section has to be followed by \maketitle, otherwise it will never be formatted correctly.
+
+\begin{abstract}
+
+%the abstract goes in here.
+% it can be renamed from "Abstract" to anything else by using the following command (before the
+%\begin{abstract}, obviously):
+% \renewcommand{\abstractname}{The New Name}
+
+%the abstract can be loaded from another file, using the following command:
+% \input{filename}
+%the above command will add the contents of the file "filename.tex" into the current document
+%without adding any page breaks
+
+%  However, the following command will add the contents of a given file between two pagebreaks:
+% \include{filename}
+
+%I am going to include an abstract from a different file. That way, maintaining the layout of the
+%main document will be easier.
+\input{abstract}
+
+\end{abstract}
+
+%before my table of contents, I want to add a preface. It will be pulled in from the file preface.tex
+\input{preface}
+
+%the following line adds a toc to the document
+\tableofcontents
+
+%a list of tables and a list of figures can be added in the same way as the toc.
+% \listoffigures
+% \listoftables
+
+%the rest of the file can be split into either chapters or sections. Chapter declarations take the
+% following format:
+% \chapter{Name of Chapter}
+
+%whereas section declarations take the following format:
+% \section{Name of Section}
+
+%sections, parts and chapters are all added to the table of contents (is there is one) automatically.
+%they are also numbered automatically. But to add one that doesn't appear in the toc and is not
+%numbered, the following command is used:
+% \section*{Name of Unreferenced, Non-Numbered Section}
+
+%subsectionsa and subsubsections can be added in the same way:
+% \sybsection{Name of Sub-Section}
+% \subsubsection{Name of Sub-Sub-Section}
+
+%the first chapter, as with the abstract, will be pulled in from another file. I will still use input, however.
+%This is because the \chapter uses \cleardoublepage and \clearpage before adding a new chapter. So,
+%there is no need to use \include, just yet.
+\input{chapterOne}
+\input{chapterTwo}
+
+\end{document}
+
+%everything after the end{document} command will be ignored by LaTeX when compiling to DVI

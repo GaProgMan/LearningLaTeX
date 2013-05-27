@@ -35,7 +35,8 @@ Jamie 'GaProgMan' Taylor
 ## Changelog ##
 
 2013-05-27 - Jamie Taylor
-
+- Readme now uses Markdown
+- 
 2012-05-02 - Jamie Taylor
 - Initial creation of solution
 - Added all source code to solution

@@ -1,33 +1,53 @@
 \chapter{Some Source Code}
 \epigraph{It's hard enough to find an error in your code when you're looking for it; it's even harder when you've assumed your code is error-free}{Steve McConnell}
 
-%this chapter will contain some source code. It will be pulled in from a file in the same directory
-%as the this file (and the rest of the document source files, too)
+%	This chapter will contain some source code. It will be pulled in
+%	from a file in the same directory as the this file (and the rest of
+%	the document source files, too)
 
-%the following code is adapted from the code listed at the following url:
-% http://texblog.org/2008/04/02/include-source-code-in-latex-with-listings/
+%	The following code is adapted from the code listed at the following
+%	url:
+%	http://texblog.org/2008/04/02/include-source-code-in-latex-with-listings/
 \section{Example of Usage}
-Adding source code to \LaTeX documents is almost as easy as adding Japanese text with Furigana. In fact, it's a very similar setup. You are just required to add a differenct package to the preamble section of the document.\\
-\indent{}The following block of code is being added from a separate file (found in the source directory - helloworld.cpp):
+Adding source code to \LaTeX documents is almost as easy as adding Japanese text with Furigana. In fact, it's a very similar setup. You are just required to add a different package to the preamble section of the document.
+\par The following block of code is being added from a separate file (found in the source directory - helloworld.cpp):
+
+%	The following command tells the LaTeX to format the supplied source
+%	file (which usually follows the use of the command) using the supplied
+%	options.
+%	In this instance, we're telling LaTeX to format the listing with syntax
+%	highlighting for C++, placing line numbers at the left, and stepping
+%	numbers along by 1 (1, 2, 3, 4, ...n)
 \lstset{numbers=left, stepnumber=1, language=C++}
+
+%	The following command tells LaTeX to insert the contents of a supplied
+%	source file, but as a file contents listing. This is different to how a
+%	standard \insert command, because the contents are not taken as
+%	valid LaTeX code.
 \lstinputlisting{helloworld.cpp}
-As with the general design of \TeX, this is very modular in nature.\\
-\indent{}For instance, if the author decided to change the source code that is added to this chapter, all that he has to do is edit the original source code file (helloworld.cpp) and reparse the \LaTeX source files. All of the formatting is taken care of, by the \LaTeX compiler, and sticks to the rules that are created in the document class declaration file (in this instance source.tex).\\
-\indent{}This way, the user does not have to worry about possibly changing the layout of the entire document by adding new lines of code to the original source code file.
-\section{Description of Useage}
-As with adding Ruby text, all that is required is a correct use package call in the preamble of the document class. The following is a direct copy of the code that adds 
+
+As with the general design of \TeX, this is very modular in nature.
+\par For instance, if the author decided to change the source code that is added to this chapter, all that she has to do is edit the original source code file (helloworld.cpp) and re-parse the \LaTeX source files. All of the formatting is taken care of, by the \LaTeX compiler, and sticks to the rules that are created in the document class declaration file (in this instance source.tex).
+\par This way, the user does not have to worry about possibly changing the layout of the entire document by adding new lines of code to the original source code file.
+\section{Description of Usage}
+As with adding Ruby text, all that is required is a correct use package call in the preamble of the document class. The following is a direct copy of the code that adds
+
+%	The following code tells LaTeX to ignore the commands between the
+%	\begin{} and \end{} commands. They will be outputted as a listing, using
+%	whatever formatting has already been supplied.
 	\begin{lstlisting}
-\usepackage{listings}
+		\usepackage{listings}
 	\end{lstlisting}
-The listings package allows the \LaTeX interpreter to add to several things. The two things that we are interested in, in this instance, are addinglistings from separate source files and formatting listings.\\
-\indent{}To add source code from a separate file, the following code is used:
+
+The listings package allows the \LaTeX interpreter to add to several things. The two things that we are interested in, in this instance, are adding listings from separate source files and formatting listings.
+\par To add source code from a separate file, the following code is used:
 	\begin{lstlisting}
-\lstinputlisting{relative path to the source file}
+		\lstinputlisting{relative path to the source file}
 	\end{lstlisting}
-This code block informs the \LaTeX interpreter to find the file specified within the local directory (relative directory paths can be supplied, also), load the contents of the supplied file and place it into the body of the document.\\
-\indent{}This is fine for most uses, but suppose we want to format the code in some way. For instance, the code at the beginning of this chapter was formatted with line numbers at the left of the code, a frame around the code block and all C++ keywords highlighted.\\
-\indent{}To do this, a single line of code is required above the code listing. The specific line of code takes the following format:
+This code block informs the \LaTeX interpreter to find the file specified within the local directory (relative directory paths can be supplied, also), load the contents of the supplied file and place it into the body of the document.
+\par This is fine for most uses, but suppose we want to format the code in some way. For instance, the code at the beginning of this chapter was formatted with line numbers at the left of the code, a frame around the code block and all C++ keywords highlighted (via the C++ syntax highlighting either supplied [by typesetter input] or provided [by using the default rules provided in the class chosen]).
+\par To do this, a single line of code is required above the code listing. The specific line of code takes the following format:
 	\begin{lstlisting}
-\lstset{numbers=left, stepnumber=1, language=C++}
+		\lstset{numbers=left, stepnumber=1, language=C++}
 	\end{lstlisting}
-The above block of code instructs the \LaTeX interpreter to format the code block with line numbers on the left, numbers at ever single step and to highlight all C++ keywords.
+The above block of code instructs the \LaTeX interpreter to format the code block with line numbers on the left, numbers at every single step and to highlight all C++ keywords.

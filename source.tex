@@ -1,108 +1,146 @@
-%the document class command HAS to be the first thing in a LaTeX file. It takes
-%the following format:
-% \documentclass[options]{class}
+%	The document class command HAS to be the first thing in a LaTeX file. It takes
+%	the following format:
+%	\documentclass[options]{class}
 
+%	The chosen options tell LaTeX to create a document using the Report class
+%	which uses a4 paper, set to two sided and the font size shall be 11pt
 \documentclass[11pt, a4paper, twoside]{report}
 
-%document classes are:
-%article	- for articles in journals, presentations, short reports, program
+%	Some available document classes are:
+%	article	- for articles in journals, presentations, short reports, program
 %			  documentation, etc.
-%IEEEtran	- for articles in the IEEE transactions format.
-%proc		- for proceedings (based on article)
-%minimal	- only used for debugging purposes
-%report	- for full reports, thesis documents, small books, etc.
-%book	- for full books.
-%slides	- for slides (uses big sans serif characters)
-%memoir	- for writing full memoir-type books
-%letter	- for writing letters
-%beamer	- for writing presentations
+%	IEEEtran	- for articles in the IEEE transactions format.
+%	proc		- for proceedings (based on article)
+%	minimal	- only used for debugging purposes
+%	report	- for full reports, thesis documents, small books, etc.
+%	book		- for full books.
+%	slides	- for slides (uses big sans serif characters)
+%	memoir	- for writing full memoir-type books
+%	letter		- for writing letters
+%	beamer	- for writing presentations
 
-%user packages can be loaded in the preamble only. They go in here in the following format:
-% \usepackage[options]{package}
+%	User packages can be loaded in the preamble only. This means that all
+%	packages that are required for the successful compilation of the document
+%	need to be declared at the very root of the document files.
+%	They go in here in the
+%	following format:
+%	\usepackage[options]{package}
 
-%including the package "epigraph" this will allow quotes to be added at the begining of each chapter
-%or section.
+%	Including the package "epigraph" allows quotes to be added at the
+%	beginning of each chapter or section.
 \usepackage{epigraph}
 
-%the following two usepackage statements MUST be included for the Japanese text found in
-%chapterOne.tex to compile correctly.
+%	The following two usepackage statements MUST be included for the
+%	Japanese text found in chapterOne.tex to compile correctly.
 \usepackage{CJKutf8}
 \usepackage[overlap]{ruby}
 
-%the following package is required for adding source code listings to a document. At the minute,
-%there is a source code listing in the file chapterTwo.tex
+%	The following package is required for adding source code listings to a
+%	document.
+%	At the moment, there is a source code listing in the file chapterTwo.tex
 \usepackage{listings}
 
+%	The following package is used for formatting urls in the body and
+%	providing a clickable link in the rendered file.
 \usepackage{url}
-%the above package is used for parsing url text
 
+%	The following package is used to parse mathematical characters
+%	(used in preface.tex)
 \usepackage{mathtools}
-%the above package is used to parse mathematicall chaaracters (used in abstract.tex)
 
-%this area is called the "preamble"
+%	The above area is called the "preamble"
 
+%	The \begin{document} command informs LaTeX to begin processing
+%	the document proper, and that it should no longer receive any
+%	\usepackage{} statements
 \begin{document}
+
+%	\title, and \author are compulsory.
+%	If \date is omitted, LaTeX will put today's date in it's place. The entire
+%	section has to be followed by \maketitle, otherwise it will not be
+%	formatted correctly.
 
 \title{A Selection of Examples of \LaTeX Code with Discussions}
 \author {Jamie Taylor}
 \maketitle
 
-%\title, and \author are compulsory. If \date is omitted, LaTeX will put today's date in it's place
-%the whole section has to be followed by \maketitle, otherwise it will never be formatted correctly.
+%	The abstract, if required, goes in here. It can be renamed from
+%	'Abstract' to anything else by using the following command
+%	(before the \begin{abstract}, obviously):
+%	\renewcommand{\abstractname}{The New Name}
 
 \begin{abstract}
 
-%the abstract goes in here.
-% it can be renamed from "Abstract" to anything else by using the following command (before the
-%\begin{abstract}, obviously):
-% \renewcommand{\abstractname}{The New Name}
+%	The abstract (along with any other document content) can be
+%	loaded from another file, using the following command:
+%	\input{filename}
 
-%the abstract can be loaded from another file, using the following command:
-% \input{filename}
-%the above command will add the contents of the file "filename.tex" into the current document
-%without adding any page breaks
+%	The above command will add the contents of the file 'filename.tex'
+%	into the current document without adding any page breaks.
+%	It will look use non-absolute file addressing to find the target file
+%	(i.e it will look in the same directory as the current source file)
 
-%  However, the following command will add the contents of a given file between two pagebreaks:
-% \include{filename}
+%	However, the following command will add the contents of a given
+%	file between two page breaks:
+%	\include{filename}
 
-%I am going to include an abstract from a different file. That way, maintaining the layout of the
-%main document will be easier.
+%	\include{} adds the contents of the file in place, whereas \insert{}
+%	will add a page break in place, then add the contents of the file,
+%	then add another page break before the content after the command.
+
+%	I am going to include an abstract from a separate file. That way,
+%	maintaining the layout of the main document will be easier.
 \input{abstract}
 
+%	The following command tells LaTeX that we would like to end the
+%	section or command (in this case the abstract)
 \end{abstract}
 
-%before my table of contents, I want to add a preface. It will be pulled in from the file preface.tex
+%	Before my table of contents, I want to add a preface. It will be
+%	pulled in from the file preface.tex, much like the Abstract was.
 \input{preface}
 
-%the following line adds a toc to the document
+%	The command informs LaTeX to add a table of contents directly
+%	where command appears.
 \tableofcontents
 
-%a list of tables and a list of figures can be added in the same way as the toc.
-% \listoffigures
-% \listoftables
+%	A list of tables and a list of figures can be added in the same way
+%	as the table of contents. The following two commands are used
+%	to add them.
+%	\listoffigures
+%	\listoftables
 
-%the rest of the file can be split into either chapters or sections. Chapter declarations take the
-% following format:
-% \chapter{Name of Chapter}
+%	The rest of the file can be split into either chapters or sections.
+%	Chapter declarations take the following format:
+% 	\chapter{Name of Chapter}
 
-%whereas section declarations take the following format:
-% \section{Name of Section}
+%	Whereas section declarations take the following format:
+%	\section{Name of Section}
 
-%sections, parts and chapters are all added to the table of contents (is there is one) automatically.
-%they are also numbered automatically. But to add one that doesn't appear in the toc and is not
-%numbered, the following command is used:
-% \section*{Name of Unreferenced, Non-Numbered Section}
+%	Sections, parts and chapters are all added to the table of contents
+%	(ig there is one) automatically.
+%	They are also numbered automatically. But to add one that doesn't
+%	appear in the table of contents and is not numbered, the following
+%	command is used:
+%	\section*{Name of Unreferenced, Non-Numbered Section}
+%	The same can be achieved for chapters by using the following:
+%	\chapter*{Name of Unreferenced Chapter}
 
-%subsectionsa and subsubsections can be added in the same way:
-% \sybsection{Name of Sub-Section}
-% \subsubsection{Name of Sub-Sub-Section}
+%	Subsections and Subsubsections can be added in the same way:
+%	\subsection{Name of Sub-Section}
+%	\subsubsection{Name of Sub-Sub-Section}
 
-%the first chapter, as with the abstract, will be pulled in from another file. I will still use input, however.
-%This is because the \chapter uses \cleardoublepage and \clearpage before adding a new chapter. So,
-%there is no need to use \include, just yet.
+%	The first chapter, as with the abstract and preface, will be pulled in
+%	from another file. I will still use input, however. This is because the
+%	\chapter command uses \cleardoublepage and \clearpage before
+%	adding a new chapter. So, there is no need to use \include, just yet.
+
 \input{chapterOne}
 \input{chapterTwo}
 
-\end{document}
+%	The following command is the final one that LaTeX will see from the
+%	main source file. When it sees this command, it will begin processing
+%	the document and producing the output.
+%	Everything after this command will be ignored by LaTeX
 
-%everything after the end{document} command will be ignored by LaTeX when compiling to DVI
+\end{document}

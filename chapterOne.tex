@@ -1,20 +1,28 @@
 \chapter{A Beginning}
+
+%	The following command inserts an epigraph into the current
+%	chapter. The first argument to the epigraph command is the
+%	quote to use, and the second argument is the author.
+
 \epigraph{A journey of a thousand miles begins with a single step}{Laozi}
 
 
-%a couple of comments about the contents of this file:
-% \chapter{Name of chapter}	- creates a new chapter, on a new page, with the name
-%					  "Name of Chapter"
-%\ epigrpah{A Quote}{Author}	- adds a quote to the text
-%at the minute, the epigraph at the top of the file has been commented out, as it requires
-%the epigraph package. This isn't a huge proble, except that it requires all 3gigs of texLive
-% be installed (but this will give access to all of the other useful packages)
+%	Acouple of comments about the contents of this file:
+%	\chapter{Name of chapter}		- creates a new chapter,
+%							on a new page, with the name
+%							"Name of Chapter"
+%	\epigraph{A Quote}{Author}	- adds a quote to the text
 
-%the following section of Japanese text is adapted from the tex.stackexchange found at
-%the following url: http://tex.stackexchange.com/a/15528
+%	The following section of Japanese text is adapted from
+%	the tex.stackexchange found at the following url: 
+%	http://tex.stackexchange.com/a/15528
 
 \section{Example of Usage}
 \begin{CJK}{UTF8}{min}
+%	TODO : remember to open the file as Unicode (because Mac based
+%	TeX editors aren't smart enough to do that by default, apparently.
+%	TODO : fix the following code by copying it back from the repo before
+%	pushing the changes
 これは \ruby{日}{に} \ruby{本}{ほん}\ruby{語}{ご}です。\\
 %\\furigana text example: \ruby{山}{やま}\ruby{田}{だ}と\ruby{上}{うえ}\ruby{田}{だ}
 \end{CJK}
